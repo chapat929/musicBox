@@ -15,8 +15,7 @@ public class MiniMusicCommandLine {
     }
 
     private void play(int instrument, int note) {
-        try {
-            final Sequencer player = MidiSystem.getSequencer();
+        try (final Sequencer player = MidiSystem.getSequencer()){
             player.open();
             final Sequence sequence = new Sequence(Sequence.PPQ, 4);
             final Track track = sequence.createTrack();
